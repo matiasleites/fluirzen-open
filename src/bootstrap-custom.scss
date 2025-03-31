@@ -1,0 +1,39 @@
+$theme-colors: (
+  "primary": #242424,
+  "contrast": #ffffff,
+  "secondary": #999999,
+  "success": #a0d076,
+  "successl": white,
+  "danger": #eb8686,
+  "grey": #d9d9d9,
+  "grey2": #f0f0f0,
+  "white": #fff,
+  "back": #ededed,
+  "warning": #fff564,
+);
+
+:root {
+  --primary: #242424;
+  --danger: #eb8686;
+  --notification: #ec7741;
+  --white: #fff;
+  --secondary: #999999;
+  --back: #ededed;
+  --grey: #d9d9d9;
+  --success: #a0d076;
+  --warning: #fff564;
+}
+
+@media screen and (max-width: 1366px) {
+  :root {
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  :root {
+    font-size: 100%;
+  }
+}
+
+@import "bootstrap/scss/bootstrap.scss";
