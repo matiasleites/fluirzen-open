@@ -9,7 +9,7 @@ export default function FooterSection() {
     <section
       id="about"
       className="d-flex flex-column"
-      style={{ minHeight: "100vh", marginTop: "23px" }}
+      style={{ minHeight: "90vh", marginTop: "23px" }}
     >
       <div className="d-flex flex-column w-100">
         <Row className="mx-auto w-100">
