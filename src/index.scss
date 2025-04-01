@@ -1,9 +1,13 @@
 :root {
-  font-family: Roboto;
+  font-family: Roboto !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: overlay !important;
   overscroll-behavior: none !important;
+}
+
+body {
+  font-family: Roboto !important;
 }
 
 ::-webkit-scrollbar {

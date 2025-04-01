@@ -24,6 +24,21 @@ $theme-colors: (
   --warning: #fff564;
 }
 
+p {
+  font-size: 1.5rem !important;
+  font-weight: 300 !important;
+}
+
+h1 {
+  font-size: 4rem !important;
+  font-weight: 300 !important;
+}
+
+h2 {
+  font-size: 3rem !important;
+  font-weight: 300 !important;
+}
+
 @media screen and (max-width: 1366px) {
   :root {
     font-size: 90%;
