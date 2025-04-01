@@ -5,8 +5,12 @@ import VideoPlayer from "./videoPlayer/VideoPlayer";
 export default function HeroSection() {
   const { t } = useTranslation();
   return (
-    <section id="hero" className="d-flex" style={{ minHeight: "100vh" }}>
-      <div className="d-flex w-100">
+    <section
+      id="hero"
+      className="d-flex flex-column"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="d-flex w-100 my-auto">
         <Row className="w-100 my-auto">
           <Col sm="1" lg="1" />
           <Col sm="6" className="text-start">
@@ -15,13 +19,16 @@ export default function HeroSection() {
           </Col>
           <Col sm="4" className="text-start d-flex">
             <div className="my-auto">
-              <h2>{t("appSlogan")}</h2>
+              <h2 className="text-uppercase">{t("appSlogan")}</h2>
               <p dangerouslySetInnerHTML={{ __html: t("heroText") }} />
             </div>
           </Col>
           <Col sm="1" />
         </Row>
       </div>
+      <h2 className="text-uppercase text-center mb-0 mt-auto">
+        {t("heroInfoSubtitle")}
+      </h2>
     </section>
   );
 }
