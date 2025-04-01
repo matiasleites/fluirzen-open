@@ -24,6 +24,16 @@ $theme-colors: (
   --warning: #fff564;
 }
 
+a {
+  text-decoration: none !important;
+  color: rgb(215, 207, 255) !important;
+  font-size: 1.5rem !important;
+}
+
+a:hover {
+  color: rgb(190, 179, 248) !important;
+}
+
 p {
   font-size: 1.5rem !important;
   font-weight: 300 !important;
@@ -39,6 +49,11 @@ h2 {
   font-weight: 300 !important;
 }
 
+h3 {
+  font-size: 2.25rem !important;
+  font-weight: 300 !important;
+}
+
 @media screen and (max-width: 1366px) {
   :root {
     font-size: 90%;
@@ -47,7 +62,7 @@ h2 {
 
 @media screen and (max-width: 950px) {
   :root {
-    font-size: 100%;
+    font-size: 80%;
   }
 }
 

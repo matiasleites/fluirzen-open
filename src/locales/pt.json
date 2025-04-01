@@ -3,5 +3,13 @@
   "appSlogan": "Mindfulness para sua jornada laboral",
   "underConstructionInfo": "Site em construção!",
   "heroText": "Pausas guiadas de 5 minutos para reduzir o estresse e aumentar o foco.<br>Sem complicação – apenas respire, leia e recarregue.",
-  "heroInfoSubtitle": "Tecnologia e bem-estar, simplificados"
+  "heroInfoSubtitle": "Tecnologia e bem-estar, simplificados",
+  "aboutUs": "Sobre nós",
+  "aboutParagraphOne": "O FluirZen é um app de pausas ativas feito por desenvolvedores, para profissionais como você Oferecemos meditações guiadas por texto de apenas 5 minutos projetadas para se encaixar na sua rotina sem complicação.<br>Sem assinaturas ocultas, sem vozes robóticas. Apenas mindfulness eficiente para sua jornada.",
+  "aboutParagraphTwo": "Nosso frontend é open-source (disponível no GitHub), porque acreditamos em transparência e comunidade. Use os sons ambientais, leia as instruções em seu ritmo e volte ao trabalho renovado.",
+  "githubLink": "https://github.com/matiasleites/fluirzen-front",
+  "ourTeam": "Nossa equipe",
+  "ourTeamInfo": "Conheça a equipe que faz o desenvolvimento e manutenção do Fluirzen, pode contatar eles pelo linkedin.",
+  "founder": "Founder",
+  "freeLibrariesInfo": "Bibliotecas, ferramentas e sites usados no projeto"
 }

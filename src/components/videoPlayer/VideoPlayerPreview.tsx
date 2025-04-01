@@ -1,4 +1,6 @@
-export default function VideoPlayer() {
+import { t } from "i18next";
+
+export default function VideoPlayerPreview() {
   return (
     <div
       className="bg-black w-100 d-flex rounded"
@@ -6,7 +8,7 @@ export default function VideoPlayer() {
     >
       <div className="m-auto">
         <h1>Video Player</h1>
-        <p>This is a video player component.</p>
+        <p className="text-center">{t("underConstructionInfo")}</p>
       </div>
     </div>
   );

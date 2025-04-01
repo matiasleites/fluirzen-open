@@ -1,5 +1,7 @@
 import back from "../assets/images/back-sky.webp";
-import HeroSection from "../components/HeroSection";
+import AboutSection from "../components/sections/AboutSection";
+import FooterSection from "../components/sections/FooterSection";
+import HeroSection from "../components/sections/HeroSection";
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
       style={{ backgroundImage: `url(${back})`, minHeight: "250vh" }}
     >
       <HeroSection />
+      <AboutSection />
+      <FooterSection />
     </div>
   );
 }
