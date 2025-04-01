@@ -9,15 +9,15 @@ name: Deploy to Firebase Hosting on push
     types:
       - closed
 env:
-  REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
-  REACT_APP_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
-  REACT_APP_DB: ${{ secrets.REACT_APP_DB }}
-  REACT_APP_PID: ${{ secrets.REACT_APP_PID }}
-  REACT_APP_SB: ${{ secrets.REACT_APP_SB }}
-  REACT_APP_SID: ${{ secrets.REACT_APP_SID }}
-  REACT_APP_APPID: ${{ secrets.REACT_APP_APPID }}
-  REACT_APP_MID: ${{ secrets.REACT_APP_MID }}
-  REACT_APP_BACK: ${{ secrets.REACT_APP_BACK }}
+  VITE_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
+  VITE_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+  VITE_DB: ${{ secrets.REACT_APP_DB }}
+  VITE_PID: ${{ secrets.REACT_APP_PID }}
+  VITE_SB: ${{ secrets.REACT_APP_SB }}
+  VITE_SID: ${{ secrets.REACT_APP_SID }}
+  VITE_APPID: ${{ secrets.REACT_APP_APPID }}
+  VITE_MID: ${{ secrets.REACT_APP_MID }}
+  VITE_BACK: ${{ secrets.REACT_APP_BACK }}
 jobs:
   build_and_deploy:
     if: github.event.pull_request.merged
@@ -26,15 +26,15 @@ jobs:
       - uses: SpicyPizza/create-envfile@v1
         with:
           envkey_DEBUG: false
-          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
-          REACT_APP_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
-          REACT_APP_DB: ${{ secrets.REACT_APP_DB }}
-          REACT_APP_PID: ${{ secrets.REACT_APP_PID }}
-          REACT_APP_SB: ${{ secrets.REACT_APP_SB }}
-          REACT_APP_SID: ${{ secrets.REACT_APP_SID }}
-          REACT_APP_APPID: ${{ secrets.REACT_APP_APPID }}
-          REACT_APP_MID: ${{ secrets.REACT_APP_MID }}
-          REACT_APP_BACK: ${{ secrets.REACT_APP_BACK }}
+          VITE_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
+          VITE_AUTHDOMAIN: ${{ secrets.REACT_APP_AUTHDOMAIN }}
+          VITE_DB: ${{ secrets.REACT_APP_DB }}
+          VITE_PID: ${{ secrets.REACT_APP_PID }}
+          VITE_SB: ${{ secrets.REACT_APP_SB }}
+          VITE_SID: ${{ secrets.REACT_APP_SID }}
+          VITE_APPID: ${{ secrets.REACT_APP_APPID }}
+          VITE_MID: ${{ secrets.REACT_APP_MID }}
+          VITE_BACK: ${{ secrets.REACT_APP_BACK }}
           file_name: .env
       - uses: actions/checkout@v2
       - run: npm install
