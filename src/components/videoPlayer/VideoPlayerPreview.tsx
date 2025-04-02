@@ -273,7 +273,6 @@ export default function VideoPlayerPreview() {
         src={audioConfig[type].audio}
         onTimeUpdate={updateProgress}
         onEnded={handleEnded}
-        loop
       />
     </div>
   );
