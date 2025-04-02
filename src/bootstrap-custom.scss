@@ -54,6 +54,26 @@ h3 {
   font-weight: 300 !important;
 }
 
+.pointer,
+.pointer-white,
+.pointer-purple {
+  transition: 0.3s !important;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.pointer-white:hover {
+  cursor: pointer;
+  color: #b8b8b8 !important;
+}
+
+.pointer-purple:hover {
+  cursor: pointer;
+  color: #a49dff !important;
+}
+
 @media screen and (max-width: 1366px) {
   :root {
     font-size: 90%;
