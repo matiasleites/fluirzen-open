@@ -9,7 +9,7 @@ export default function FooterSection() {
     <section
       id="about"
       className="d-flex flex-column"
-      style={{ minHeight: "100vh", marginTop: "23px" }}
+      style={{ minHeight: "90vh", marginTop: "23px" }}
     >
       <div className="d-flex flex-column w-100">
         <Row className="mx-auto w-100">
@@ -43,7 +43,7 @@ export default function FooterSection() {
               target="_blank"
               referrerPolicy="no-referrer"
             >
-              Unsplash
+              Unsplash.com
             </a>
             <br></br>
             <a
@@ -51,9 +51,17 @@ export default function FooterSection() {
               target="_blank"
               referrerPolicy="no-referrer"
             >
-              FreeSound
+              FreeSound.org
             </a>
             <br></br>
+
+            <a
+              href=" https://pixabay.com/"
+              target="_blank"
+              referrerPolicy="no-referrer"
+            >
+              Pixabay.com
+            </a>
           </Col>
           <Col
             sm="5"
@@ -63,7 +71,11 @@ export default function FooterSection() {
         </Row>
       </div>{" "}
       <p className="mb-3 mt-auto text-center">
-        Fluirzer © {new Date().toLocaleDateString("es-ES", { year: "numeric" })}
+        Fluirzer © {new Date().toLocaleDateString("es-ES", { year: "numeric" })}{" "}
+        |{" "}
+        <a href="https://www.matiasleites.com.br" target="_blank">
+          Matias Leites
+        </a>
       </p>
     </section>
   );

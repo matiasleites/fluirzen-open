@@ -11,5 +11,12 @@
   "ourTeam": "Nossa equipe",
   "ourTeamInfo": "Conheça a equipe que faz o desenvolvimento e manutenção do Fluirzen, pode contatar eles pelo linkedin.",
   "founder": "Founder",
-  "freeLibrariesInfo": "Bibliotecas, ferramentas e sites usados no projeto"
+  "freeLibrariesInfo": "Bibliotecas, ferramentas e sites usados no projeto",
+  "start": "Iniciar",
+  "audioTypes": {
+    "forest": "Floresta",
+    "river": "Rio",
+    "ocean": "Oceano",
+    "music": "Music"
+  }
 }
