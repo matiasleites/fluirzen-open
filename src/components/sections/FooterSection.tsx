@@ -43,7 +43,7 @@ export default function FooterSection() {
               target="_blank"
               referrerPolicy="no-referrer"
             >
-              Unsplash
+              Unsplash.com
             </a>
             <br></br>
             <a
@@ -51,9 +51,17 @@ export default function FooterSection() {
               target="_blank"
               referrerPolicy="no-referrer"
             >
-              FreeSound
+              FreeSound.org
             </a>
             <br></br>
+
+            <a
+              href=" https://pixabay.com/"
+              target="_blank"
+              referrerPolicy="no-referrer"
+            >
+              Pixabay.com
+            </a>
           </Col>
           <Col
             sm="5"
