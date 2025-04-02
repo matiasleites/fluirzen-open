@@ -63,7 +63,11 @@ export default function FooterSection() {
         </Row>
       </div>{" "}
       <p className="mb-3 mt-auto text-center">
-        Fluirzer © {new Date().toLocaleDateString("es-ES", { year: "numeric" })}
+        Fluirzer © {new Date().toLocaleDateString("es-ES", { year: "numeric" })}{" "}
+        |{" "}
+        <a href="https://www.matiasleites.com.br" target="_blank">
+          Matias Leites
+        </a>
       </p>
     </section>
   );

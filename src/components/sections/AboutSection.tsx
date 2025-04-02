@@ -58,6 +58,10 @@ export default function AboutSection() {
                     >
                       linkedin.com/in/matiasleites
                     </a>
+                    <br />
+                    <a href="https://www.matiasleites.com.br" target="_blank">
+                      www.matiasleites.com.br
+                    </a>
                   </div>
                 </div>
               </Col>
