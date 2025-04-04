@@ -11,7 +11,12 @@ import forest from "../../assets/images/forest-player.webp";
 import music from "../../assets/images/music-player.webp";
 import ocean from "../../assets/images/ocean-player.webp";
 import river from "../../assets/images/river-player.webp";
+import rain from "../../assets/images/rain-player.webp";
 import forest001 from "../../assets/audios/forest-001.mp3";
+import ocean001 from "../../assets/audios/ocean-001.mp3";
+import river001 from "../../assets/audios/river-001.mp3";
+import music001 from "../../assets/audios/music-001.mp3";
+import rain001 from "../../assets/audios/rain-001.mp3";
 import "./videoPlayer.scss";
 import { FaVolumeUp } from "react-icons/fa";
 
@@ -26,18 +31,19 @@ export default function VideoPlayerPreview() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const meditationInstructions = [
-    "SENTE-SE NUMA POSIÇÃO CONFORTÁVEL",
-    "CONECTE SEUS FONES DE OUVIDO",
-    "RESPIRE PROFUNDAMENTE",
-    "DEIXE-SE LEVAR PELO SOM",
-    "FECHE SEUS OLHOS",
+    t("instructions.001"),
+    t("instructions.002"),
+    t("instructions.003"),
+    t("instructions.004"),
+    t("instructions.005"),
   ];
 
   const audioConfig = {
     forest: { image: forest, audio: forest001 },
-    river: { image: river, audio: forest001 },
-    ocean: { image: ocean, audio: forest001 },
-    music: { image: music, audio: forest001 },
+    river: { image: river, audio: river001 },
+    ocean: { image: ocean, audio: ocean001 },
+    music: { image: music, audio: music001 },
+    rain: { image: rain, audio: rain001 },
   } as const;
 
   const nextType = useCallback(() => {
@@ -107,7 +113,7 @@ export default function VideoPlayerPreview() {
       setCurrentInstruction((prev) =>
         prev < meditationInstructions.length - 1 ? prev + 1 : prev
       );
-    }, 8000);
+    }, 6000);
 
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -145,8 +151,8 @@ export default function VideoPlayerPreview() {
     >
       {!showPlayer && (
         <div
-          className="mt-1 ms-1 d-flex pointer-purple"
-          style={{ position: "absolute" }}
+          className="mt-0 pt-1 ms-1 d-flex pointer-purple"
+          style={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.3)" }}
         >
           {audioTypes.map((typeItem) => (
             <div
@@ -155,7 +161,7 @@ export default function VideoPlayerPreview() {
               key={`audio-type-btn-${typeItem}`}
             >
               <p
-                className="text-uppercase pointer-purple"
+                className="text-uppercase pointer-purple mb-0"
                 style={{ color: type === typeItem ? "white" : "gray" }}
               >
                 {t(`audioTypes.${typeItem}`)}
