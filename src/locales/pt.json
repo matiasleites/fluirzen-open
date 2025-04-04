@@ -17,6 +17,14 @@
     "forest": "Floresta",
     "river": "Rio",
     "ocean": "Oceano",
-    "music": "Music"
+    "music": "Música",
+    "rain": "Chuva"
+  },
+  "instructions": {
+    "001": "SENTE-SE NUMA POSIÇÃO CONFORTÁVEL",
+    "002": "CONECTE SEUS FONES DE OUVIDO",
+    "003": "RESPIRE PROFUNDAMENTE",
+    "004": "DEIXE-SE LEVAR PELO SOM",
+    "005": "FECHE SEUS OLHOS"
   }
 }
