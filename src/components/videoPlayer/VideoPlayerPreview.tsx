@@ -19,6 +19,7 @@ import music001 from "../../assets/audios/music-001.mp3";
 import rain001 from "../../assets/audios/rain-001.mp3";
 import "./videoPlayer.scss";
 import { FaVolumeUp } from "react-icons/fa";
+import { UseAppContext } from "../../context/AppContext";
 
 export default function VideoPlayerPreview() {
   const [type, setType] = useState<AudioType>("ocean");
@@ -29,6 +30,7 @@ export default function VideoPlayerPreview() {
   const [currentInstruction, setCurrentInstruction] = useState(0);
   const [volume, setVolume] = useState(0.7);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { isMobile } = UseAppContext();
 
   const meditationInstructions = [
     t("instructions.001"),
@@ -141,7 +143,7 @@ export default function VideoPlayerPreview() {
       className="bg-black w-100 d-flex flex-column rounded"
       style={{
         transition: "all 0.3s",
-        minHeight: "55vh",
+        minHeight: isMobile ? "40vh" : "55vh",
         backgroundImage: `url(${selectedBack})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -151,8 +153,11 @@ export default function VideoPlayerPreview() {
     >
       {!showPlayer && (
         <div
-          className="mt-0 pt-1 ms-1 d-flex pointer-purple"
-          style={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.3)" }}
+          className="mt-0 pt-1 ms-1 d-flex flex-wrap pointer-purple"
+          style={{
+            position: "relative",
+            backgroundColor: "rgba(0,0,0,0.3)",
+          }}
         >
           {audioTypes.map((typeItem) => (
             <div

@@ -40,13 +40,13 @@ export default function AboutSection() {
 
             <div className="mx-auto w-100">
               <Col sm="6">
-                <div className="d-flex">
+                <div className={"d-flex " + (isMobile ? "flex-column" : "")}>
                   <Image
                     src={matias}
                     alt="Matias profile"
                     style={{ maxWidth: isMobile ? "90vw" : "17vw" }}
                   />
-                  <div className="ms-2">
+                  <div className={"ms-2" + isMobile ? "mt-2" : ""}>
                     <h3 className="text-uppercase mb-0">Matias Leites</h3>
                     <p className="mb-0" style={{ fontSize: "2rem" }}>
                       {t("founder")}
