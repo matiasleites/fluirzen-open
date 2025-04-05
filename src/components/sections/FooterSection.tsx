@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { UseAppContext } from "../../context/AppContext";
+import { UseAppContext } from "../../context/UseAppContext";
 
 export default function FooterSection() {
   const { t } = useTranslation();

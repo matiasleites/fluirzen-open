@@ -41,3 +41,14 @@ input[type="range"] {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.player-cover-layout {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 10px;
+}

@@ -1,6 +1,6 @@
 import { Col, Row, Image } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { UseAppContext } from "../../context/AppContext";
+import { UseAppContext } from "../../context/UseAppContext";
 import matias from "../../assets/images/matias.webp";
 
 export default function AboutSection() {
