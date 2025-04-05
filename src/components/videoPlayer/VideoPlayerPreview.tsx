@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 import { AudioType, audioTypes } from "../../types/AudioType";
 import {
   FaHeadphonesSimple,
@@ -19,6 +19,7 @@ import music001 from "../../assets/audios/music-001.mp3";
 import rain001 from "../../assets/audios/rain-001.mp3";
 import "./videoPlayer.scss";
 import { FaVolumeUp } from "react-icons/fa";
+import { UseAppContext } from "../../context/UseAppContext";
 
 export default function VideoPlayerPreview() {
   const [type, setType] = useState<AudioType>("ocean");
@@ -29,6 +30,7 @@ export default function VideoPlayerPreview() {
   const [currentInstruction, setCurrentInstruction] = useState(0);
   const [volume, setVolume] = useState(0.7);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { isMobile, width, height } = UseAppContext();
 
   const meditationInstructions = [
     t("instructions.001"),
@@ -136,150 +138,180 @@ export default function VideoPlayerPreview() {
 
   const selectedBack = audioConfig[type].image;
 
+  const [playerStyle, setPlayerStyle] = useState({
+    transition: "all 0.3s",
+    minHeight: isMobile ? "40vh" : "55vh",
+    backgroundImage: `url(${selectedBack})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+  } as CSSProperties);
+
+  useEffect(() => {
+    const tempWidth = width < 1000 ? `${width * 0.9}px` : "960px";
+    const tempHeight = width < 1000 ? `${height * 0.9}px` : "644px";
+
+    setPlayerStyle({
+      maxWidth: showPlayer ? (isMobile ? "95vw" : tempWidth) : undefined,
+      maxHeight: showPlayer ? (isMobile ? "90vh" : tempHeight) : undefined,
+      transition: "all 0.3s",
+      minHeight: isMobile ? "40vh" : "55vh",
+      backgroundImage: `url(${selectedBack})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      height: "100%",
+      margin: "auto",
+    });
+  }, [isMobile, selectedBack, showPlayer, width, height]);
+
   return (
-    <div
-      className="bg-black w-100 d-flex flex-column rounded"
-      style={{
-        transition: "all 0.3s",
-        minHeight: "55vh",
-        backgroundImage: `url(${selectedBack})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-      }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {!showPlayer && (
-        <div
-          className="mt-0 pt-1 ms-1 d-flex pointer-purple"
-          style={{ position: "absolute", backgroundColor: "rgba(0,0,0,0.3)" }}
-        >
-          {audioTypes.map((typeItem) => (
-            <div
-              className="me-2 px-2"
-              onClick={() => chooseType(typeItem)}
-              key={`audio-type-btn-${typeItem}`}
-            >
-              <p
-                className="text-uppercase pointer-purple mb-0"
-                style={{ color: type === typeItem ? "white" : "gray" }}
-              >
-                {t(`audioTypes.${typeItem}`)}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {!showPlayer && (
-        <div className="m-auto pointer-purple w-100">
+    <div className={"p-0 m-0 " + (showPlayer ? "player-cover-layout" : "")}>
+      <div
+        className="bg-black w-100 d-flex flex-column rounded"
+        style={playerStyle}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {!showPlayer && (
           <div
-            onClick={() => {
-              setShowPlayer(true);
-              togglePlay();
+            className="mt-0 pt-1 ms-1 d-flex flex-wrap pointer-purple"
+            style={{
+              position: "relative",
+              backgroundColor: "rgba(0,0,0,0.3)",
             }}
-            className="d-flex flex-column"
           >
-            <FaRegCirclePlay className="text-center mx-auto " size={56} />
-
-            <p className="text-center text-uppercase">{t("start")}</p>
-          </div>
-        </div>
-      )}
-
-      {showPlayer && (
-        <>
-          <div
-            className="w-100 mt-4 mb-0 d-flex pointer-purple"
-            style={{ position: "relative" }}
-          >
-            <FaHeadphonesSimple color="white" size={30} className="mx-auto" />
-          </div>
-
-          <div
-            className="w-100 m-auto px-4"
-            style={{ marginTop: "-15px!important" }}
-          >
-            <div className="mb-0 mx-auto" style={{ minHeight: "3rem" }}>
-              <h2
-                key={currentInstruction}
-                className="fade-in text-center text-shadow-heavy"
-              >
-                {meditationInstructions[currentInstruction]}
-              </h2>
-            </div>
-          </div>
-
-          <div className="d-flex flex-column mb-3 w-100 px-5 mt-0">
-            <div
-              className="w-100 rounded"
-              style={{ height: "5px", backgroundColor: "#838383" }}
-            >
+            {audioTypes.map((typeItem) => (
               <div
-                className="bg-white rounded"
-                style={{
-                  width: `${progress}%`,
-                  transition: "width 0.1s linear",
-                  height: "5px",
-                }}
-              />
+                className="me-2 px-2"
+                onClick={() => chooseType(typeItem)}
+                key={`audio-type-btn-${typeItem}`}
+              >
+                <p
+                  className="text-uppercase pointer-purple mb-0"
+                  style={{ color: type === typeItem ? "white" : "gray" }}
+                >
+                  {t(`audioTypes.${typeItem}`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!showPlayer && (
+          <div className="m-auto pointer-purple w-100">
+            <div
+              onClick={() => {
+                setShowPlayer(true);
+                togglePlay();
+              }}
+              className="d-flex flex-column"
+            >
+              <FaRegCirclePlay className="text-center mx-auto " size={56} />
+
+              <p className="text-center text-uppercase">{t("start")}</p>
+            </div>
+          </div>
+        )}
+
+        {showPlayer && (
+          <>
+            <div
+              className="w-100 mt-4 mb-0 d-flex pointer-purple"
+              style={{ position: "relative" }}
+            >
+              <FaHeadphonesSimple color="white" size={30} className="mx-auto" />
             </div>
 
             <div
-              className="d-flex me-0 ms-auto mb-0 mt-4"
-              style={{ width: "100px", position: "absolute" }}
+              className="w-100 m-auto px-4"
+              style={{ marginTop: "-15px!important" }}
             >
-              <FaVolumeUp className="text-white my-auto" />
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={volume}
-                onChange={handleVolumeChange}
-                className="w-100 my-auto ms-1"
-                style={{
-                  accentColor: "white",
-                  background: "gray",
-                  cursor: "pointer",
-                }}
-              />
+              <div className="mb-0 mx-auto" style={{ minHeight: "3rem" }}>
+                <h2
+                  key={currentInstruction}
+                  className="fade-in text-center text-shadow-heavy"
+                >
+                  {meditationInstructions[currentInstruction]}
+                </h2>
+              </div>
             </div>
 
-            <div className="mx-auto d-flex pt-3">
-              <button
-                onClick={togglePlay}
-                className="bg-transparent border-0 text-white mt-0"
+            <div className="d-flex flex-column mb-3 w-100 px-5 mt-0">
+              <div
+                className="w-100 rounded"
+                style={{ height: "5px", backgroundColor: "#838383" }}
               >
-                {isPlaying ? (
-                  <FaRegCirclePause
-                    className="text-center mx-auto "
-                    size={24}
-                  />
-                ) : (
-                  <FaRegCirclePlay className="text-center mx-auto " size={24} />
-                )}
-              </button>
+                <div
+                  className="bg-white rounded"
+                  style={{
+                    width: `${progress}%`,
+                    transition: "width 0.1s linear",
+                    height: "5px",
+                  }}
+                />
+              </div>
 
-              {!isPlaying && showPlayer && (
+              <div
+                className="d-flex me-0 ms-auto mb-0 mt-4"
+                style={{ width: "100px", position: "absolute" }}
+              >
+                <FaVolumeUp className="text-white my-auto" />
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  className="w-100 my-auto ms-1"
+                  style={{
+                    accentColor: "white",
+                    background: "gray",
+                    cursor: "pointer",
+                  }}
+                />
+              </div>
+
+              <div className="mx-auto d-flex pt-3">
                 <button
-                  onClick={() => resetProgress()}
+                  onClick={togglePlay}
                   className="bg-transparent border-0 text-white mt-0"
                 >
-                  <FaRegCircleStop className="text-center mx-auto " size={24} />
+                  {isPlaying ? (
+                    <FaRegCirclePause
+                      className="text-center mx-auto "
+                      size={24}
+                    />
+                  ) : (
+                    <FaRegCirclePlay
+                      className="text-center mx-auto "
+                      size={24}
+                    />
+                  )}
                 </button>
-              )}
-            </div>
-          </div>
-        </>
-      )}
 
-      <audio
-        ref={audioRef}
-        src={audioConfig[type].audio}
-        onTimeUpdate={updateProgress}
-        onEnded={handleEnded}
-      />
+                {!isPlaying && showPlayer && (
+                  <button
+                    onClick={() => resetProgress()}
+                    className="bg-transparent border-0 text-white mt-0"
+                  >
+                    <FaRegCircleStop
+                      className="text-center mx-auto "
+                      size={24}
+                    />
+                  </button>
+                )}
+              </div>
+            </div>
+          </>
+        )}
+
+        <audio
+          ref={audioRef}
+          src={audioConfig[type].audio}
+          onTimeUpdate={updateProgress}
+          onEnded={handleEnded}
+        />
+      </div>
     </div>
   );
 }

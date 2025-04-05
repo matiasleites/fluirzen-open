@@ -4,10 +4,20 @@
   -moz-osx-font-smoothing: grayscale;
   overflow: overlay !important;
   overscroll-behavior: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 body {
   font-family: Roboto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

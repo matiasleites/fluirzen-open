@@ -7,7 +7,12 @@ export default function Home() {
   return (
     <div
       className="text-center text-white"
-      style={{ backgroundImage: `url(${back})`, minHeight: "250vh" }}
+      style={{
+        backgroundImage: `url(${back})`,
+        minHeight: "250vh",
+        width: "100vw",
+        minWidth: "100vw",
+      }}
     >
       <HeroSection />
       <AboutSection />
