@@ -44,9 +44,10 @@ export default function AboutSection() {
                   <Image
                     src={matias}
                     alt="Matias profile"
+                    className={isMobile ? "mx-auto" : ""}
                     style={{ maxWidth: isMobile ? "90vw" : "17vw" }}
                   />
-                  <div className={"ms-2" + isMobile ? "mt-2" : ""}>
+                  <div className={"ms-2 " + (isMobile ? "mt-2" : "")}>
                     <h3 className="text-uppercase mb-0">Matias Leites</h3>
                     <p className="mb-0" style={{ fontSize: "2rem" }}>
                       {t("founder")}
