@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import VideoPlayerPreview from "../videoPlayer/VideoPlayerPreview";
+import VideoPlayer from "../videoPlayer/VideoPlayer";
 import { UseAppContext } from "../../context/UseAppContext";
 
 export default function HeroSection() {
@@ -17,7 +17,7 @@ export default function HeroSection() {
           <Col sm="1" lg="1" />
           <Col sm="6" className={isMobile ? "text-center pt-3" : "text-start"}>
             <h1 className="text-uppercase">{t("appName")}</h1>
-            <VideoPlayerPreview />
+            <VideoPlayer />
           </Col>
           <Col
             sm="4"
