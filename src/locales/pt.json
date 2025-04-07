@@ -13,6 +13,7 @@
   "founder": "Founder",
   "freeLibrariesInfo": "Bibliotecas, ferramentas e sites usados no projeto",
   "start": "Iniciar",
+  "loadingAudio": "Carregando audio",
   "audioTypes": {
     "forest": "Floresta",
     "river": "Rio",

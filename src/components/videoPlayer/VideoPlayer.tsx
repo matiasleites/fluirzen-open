@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { t } from "i18next";
 import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 import { AudioType, audioTypes } from "../../types/AudioType";
@@ -12,16 +13,37 @@ import music from "../../assets/images/music-player.webp";
 import ocean from "../../assets/images/ocean-player.webp";
 import river from "../../assets/images/river-player.webp";
 import rain from "../../assets/images/rain-player.webp";
-import forest001 from "../../assets/audios/forest-001.mp3";
-import ocean001 from "../../assets/audios/ocean-001.mp3";
-import river001 from "../../assets/audios/river-001.mp3";
-import music001 from "../../assets/audios/music-001.mp3";
-import rain001 from "../../assets/audios/rain-001.mp3";
 import "./videoPlayer.scss";
 import { FaVolumeUp } from "react-icons/fa";
 import { UseAppContext } from "../../context/UseAppContext";
+import { storage } from "../../config/firebaseConfig";
+import { getBlob, ref } from "firebase/storage";
+import localforage from "localforage";
+import { Spinner } from "react-bootstrap";
 
-export default function VideoPlayerPreview() {
+async function getAudioFile(name: string) {
+  const starsRef = ref(storage, `audios/${name}.mp3`);
+  const blob = await getBlob(starsRef);
+
+  if (blob) {
+    localforage.setItem(name, blob);
+    return URL.createObjectURL(blob);
+  } else {
+    return undefined;
+  }
+}
+
+async function getCachedAudio(name: string) {
+  return await localforage.getItem(name).then(async (cachedAudio) => {
+    if (cachedAudio) {
+      return URL.createObjectURL(cachedAudio as any);
+    } else {
+      return await getAudioFile(name);
+    }
+  });
+}
+
+export default function VideoPlayer() {
   const [type, setType] = useState<AudioType>("ocean");
   const [paused, setPaused] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
@@ -31,6 +53,8 @@ export default function VideoPlayerPreview() {
   const [volume, setVolume] = useState(0.7);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { isMobile, width, height } = UseAppContext();
+  const [currentAudio, setCurrentAudio] = useState(undefined as unknown);
+  const [loadingAudio, setLoadingAudio] = useState(false);
 
   const meditationInstructions = [
     t("instructions.001"),
@@ -41,11 +65,11 @@ export default function VideoPlayerPreview() {
   ];
 
   const audioConfig = {
-    forest: { image: forest, audio: forest001 },
-    river: { image: river, audio: river001 },
-    ocean: { image: ocean, audio: ocean001 },
-    music: { image: music, audio: music001 },
-    rain: { image: rain, audio: rain001 },
+    forest: { image: forest, audioName: "forest-001" },
+    river: { image: river, audioName: "river-001" },
+    ocean: { image: ocean, audioName: "ocean-001" },
+    music: { image: music, audioName: "music-001" },
+    rain: { image: rain, audioName: "rain-001" },
   } as const;
 
   const nextType = useCallback(() => {
@@ -72,14 +96,21 @@ export default function VideoPlayerPreview() {
   }, [paused, isPlaying, showPlayer, nextType]);
 
   const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-        setShowPlayer(true);
-      }
-      setIsPlaying(!isPlaying);
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+          setShowPlayer(true);
+        })
+        .catch((e) => {
+          console.error("Error al reproducir:", e);
+        });
     }
   };
 
@@ -137,6 +168,53 @@ export default function VideoPlayerPreview() {
   }, []);
 
   const selectedBack = audioConfig[type].image;
+
+  async function loadAudio(currentType: AudioType) {
+    const audioName = audioConfig[currentType].audioName;
+    setLoadingAudio(true);
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    const file = await getCachedAudio(audioName);
+    setCurrentAudio(file);
+    setLoadingAudio(false);
+    setShowPlayer(true);
+    setIsPlaying(true);
+
+    if (audioRef.current) {
+      audioRef.current.oncanplaythrough = () => {
+        audioRef.current
+          ?.play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((e) => {
+            setIsPlaying(false);
+            console.error("Error al reproducir:", e);
+          });
+      };
+      audioRef.current.load();
+    }
+  }
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    const audio = audioRef.current;
+    audio.oncanplaythrough = null;
+    audio.oncanplaythrough = () => {
+      if (isPlaying) {
+        audio.play().catch(console.error);
+      }
+    };
+
+    return () => {
+      audio.oncanplaythrough = null;
+    };
+  }, [currentAudio, isPlaying]);
 
   const [playerStyle, setPlayerStyle] = useState({
     transition: "all 0.3s",
@@ -200,14 +278,23 @@ export default function VideoPlayerPreview() {
           <div className="m-auto pointer-purple w-100">
             <div
               onClick={() => {
-                setShowPlayer(true);
-                togglePlay();
+                loadAudio(type);
               }}
               className="d-flex flex-column"
             >
-              <FaRegCirclePlay className="text-center mx-auto " size={56} />
-
-              <p className="text-center text-uppercase">{t("start")}</p>
+              {loadingAudio ? (
+                <>
+                  <Spinner size="sm" className="text-center mx-auto" />
+                  <p className="text-center text-uppercase">
+                    {t("loadingAudio")}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <FaRegCirclePlay className="text-center mx-auto " size={56} />
+                  <p className="text-center text-uppercase">{t("start")}</p>
+                </>
+              )}
             </div>
           </div>
         )}
@@ -276,7 +363,9 @@ export default function VideoPlayerPreview() {
                   onClick={togglePlay}
                   className="bg-transparent border-0 text-white mt-0"
                 >
-                  {isPlaying ? (
+                  {loadingAudio ? (
+                    <Spinner size="sm" className="text-center mx-auto" />
+                  ) : isPlaying ? (
                     <FaRegCirclePause
                       className="text-center mx-auto "
                       size={24}
@@ -307,7 +396,7 @@ export default function VideoPlayerPreview() {
 
         <audio
           ref={audioRef}
-          src={audioConfig[type].audio}
+          src={currentAudio as any}
           onTimeUpdate={updateProgress}
           onEnded={handleEnded}
         />
