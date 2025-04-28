@@ -4,6 +4,8 @@ How to use:
 npm install
 npm run dev
 
+Live demo: https://fluirzen.com
+
 You need a firebase account to test, needs a .env file with the secrets of the proyect (see .env.example for the structure).
 
 The audio files have to be inside the firebase storage on folder /audios/ and update the file src/components/videoPlayer
