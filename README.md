@@ -20,3 +20,5 @@ const audioConfig = {
   } as const;
 
 Example if, you store one file my-audio.mp3 on firebase storage you have to update the name in this way forest:{ image: forest, audioName: 'my-audio'}
+
+Code owner: @matiasleites https://matiasleites.com.br
