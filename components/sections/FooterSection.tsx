@@ -87,7 +87,7 @@ export const FooterSection = () => {
         </div>
       </ContentContainer>
       <p className="mb-8 mt-auto text-center">
-        Fluirzer © {new Date().toLocaleDateString("es-ES", { year: "numeric" })} |{" "}
+        Fluirzen © {new Date().toLocaleDateString("es-ES", { year: "numeric" })} |{" "}
         <a href="https://www.matiasleites.com.br" target="_blank" rel="noreferrer">
           Matias Leites
         </a>

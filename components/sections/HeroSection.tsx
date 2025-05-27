@@ -12,8 +12,8 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="flex flex-col items-center justify-center min-h-[95vh] py-7 md:py-0" ref={heroRef}>
-      <LanguageSelect className="absolute mx-auto mt-0 top-4" />
-      <ContentContainer className="px-5 md:px-0 w-full">
+      <LanguageSelect className="absolute mx-auto mt-0 top-6 md:top-4" />
+      <ContentContainer className="px-5 md:px-0 w-full pt-6 md:pt-0">
         <div className="col-span-0 md:col-span-1" />
         <div className="col-span-12 md:col-span-6">
           <motion.h1
