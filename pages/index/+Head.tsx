@@ -1,6 +1,6 @@
 // https://vike.dev/Head
 
-import ogImageUrl from "../../../assets/fluirzen-og-pt.webp";
+import ogImageUrl from "../../assets/fluirzen-og-pt.webp";
 
 export default function HeadDefault() {
   return (
