@@ -3,6 +3,7 @@ import ContentContainer from "../ContentContainer";
 import VideoPlayer from "../videoPlayer/VideoPlayer";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import LanguageSelect from "../LanguageSelect";
 
 export function HeroSection() {
   const { t } = useTranslation();
@@ -11,6 +12,7 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="flex flex-col items-center justify-center min-h-[95vh] py-7 md:py-0" ref={heroRef}>
+      <LanguageSelect className="absolute mx-auto mt-0 top-4" />
       <ContentContainer className="px-5 md:px-0 w-full">
         <div className="col-span-0 md:col-span-1" />
         <div className="col-span-12 md:col-span-6">

@@ -46,6 +46,20 @@ a:hover {
   color: rgb(190, 179, 248) !important;
 }
 
+.language-select {
+  a {
+    font-size: 1rem !important;
+  }
+}
+
+.link-white {
+  color: rgb(255, 255, 255) !important;
+}
+
+.link-white:hover {
+  color: rgb(190, 179, 248) !important;
+}
+
 p {
   font-size: 1.5rem !important;
   font-weight: 300 !important;
