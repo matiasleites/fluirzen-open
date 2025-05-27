@@ -1,7 +1,7 @@
 {
   "appName": "Fluirzen",
   "appSlogan": "Mindfulness para sua jornada laboral",
-  "appDescription": "Pausas guiadas de 5 minutos para reduzir o estresse e aumentar o foco. Sem complicação – apenas respire, leia e recarregue.",
+  "appDescription": "Fluirzen é um app de pausas guiadas que ajuda você a reduzir o estresse e melhorar o foco em apenas 5 minutos. Mindfulness simples, sem distrações, sem vozes. Respire, leia e volte ao trabalho com mais clareza e equilíbrio.",
   "underConstructionInfo": "Site em construção!",
   "heroText": "Pausas guiadas de 5 minutos para reduzir o estresse e aumentar o foco.<br>Sem complicação – apenas respire, leia e recarregue.",
   "aboutUsTitle": "Tecnologia e bem-estar, simplificados",
@@ -15,6 +15,9 @@
   "freeLibrariesInfo": "Bibliotecas, ferramentas e sites usados no projeto",
   "start": "Iniciar",
   "loadingAudio": "Carregando audio",
+  "404Title": "Página não encontrada",
+  "404Description": "A página que você está procurando não existe. Pode ter sido movida ou deletada.",
+  "404Button": "Voltar para a página inicial",
   "audioTypes": {
     "forest": "Floresta",
     "river": "Rio",
