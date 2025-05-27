@@ -1,53 +1,15 @@
-Generated with [vike.dev/new](https://vike.dev/new) ([version 435](https://www.npmjs.com/package/create-vike/v/0.0.435)) using this command:
+NODE version: 20.9.0
 
-```sh
-npm create vike@latest --- --react --tailwindcss --eslint --prettier
-```
+How to use: npm install && npm run dev
 
-## Contents
+Live demo: https://fluirzen.com
 
-* [React](#react)
+You need a firebase account to test, needs a .env file with the secrets of the proyect (see .env.example for the structure).
 
-  * [`/pages/+config.ts`](#pagesconfigts)
-  * [Routing](#routing)
-  * [`/pages/_error/+Page.jsx`](#pages_errorpagejsx)
-  * [`/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`](#pagesonpagetransitionstartts-and-pagesonpagetransitionendts)
-  * [SSR](#ssr)
-  * [HTML Streaming](#html-streaming)
+The audio files have to be inside the firebase storage on folder /audios/ and update the file src/components/videoPlayer /VideoPlayer.tsx for link to the real file names on the const audioConfig, you have to change only audioName:
 
-## React
+const audioConfig = { forest: { image: forest, audioName: "forest-001" }, river: { image: river, audioName: "river-001" }, ocean: { image: ocean, audioName: "ocean-001" }, music: { image: music, audioName: "music-001" }, rain: { image: rain, audioName: "rain-001" }, } as const;
 
-This app is ready to start. It's powered by [Vike](https://vike.dev) and [React](https://react.dev/learn).
+Example if, you store one file my-audio.mp3 on firebase storage you have to update the name in this way forest:{ image: forest, audioName: 'my-audio'}
 
-### `/pages/+config.ts`
-
-Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
-
-* A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your [`<Page>` components](https://vike.dev/Page)).
-* A default [`title`](https://vike.dev/title).
-* Global [`<head>` tags](https://vike.dev/head-tags).
-
-### Routing
-
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
-
-* [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.jsx` file is located on the filesystem)
-* [Route Strings](https://vike.dev/route-string)
-* [Route Functions](https://vike.dev/route-function)
-
-### `/pages/_error/+Page.jsx`
-
-The [error page](https://vike.dev/error-page) which is rendered when errors occur.
-
-### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
-
-The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with [`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page transition animations.
-
-### SSR
-
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for some pages.
-
-### HTML Streaming
-
-You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for some pages while still using it for others.
-
+Code owner: matiasleites https://matiasleites.com.br
