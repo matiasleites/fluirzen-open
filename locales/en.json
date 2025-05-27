@@ -1,0 +1,32 @@
+{
+    "appName": "Fluirzen",
+    "appSlogan": "Mindfulness for your workday",
+    "appDescription": "5-minute guided breaks to reduce stress and increase focus. No complications - just breathe, read, and recharge.",
+    "underConstructionInfo": "Site under construction!",
+    "heroText": "5-minute guided breaks to reduce stress and increase focus.<br>No complications - just breathe, read, and recharge.",
+    "aboutUsTitle": "Technology and wellness, simplified",
+    "aboutUs": "About us",
+    "aboutParagraphOne": "FluirZen is an active breaks app made by developers, for professionals like you. We offer 5-minute text-guided meditations designed to fit your routine without complications.<br>No hidden subscriptions, no robotic voices. Just efficient mindfulness for your day.",
+    "aboutParagraphTwo": "Our frontend is open-source (available on GitHub), because we believe in transparency and community. Use the ambient sounds, read the instructions at your own pace, and return to work refreshed.",
+    "githubLink": "https://github.com/matiasleites/fluirzen-open",
+    "ourTeam": "Our team",
+    "ourTeamInfo": "Meet the team behind Fluirzen's development and maintenance, you can contact them on LinkedIn.",
+    "founder": "Founder",
+    "freeLibrariesInfo": "Libraries, tools and websites used in the project",
+    "start": "Start",
+    "loadingAudio": "Loading audio",
+    "audioTypes": {
+        "forest": "Forest",
+        "river": "River",
+        "ocean": "Ocean",
+        "music": "Music",
+        "rain": "Rain"
+    },
+    "instructions": {
+        "001": "SIT IN A COMFORTABLE POSITION",
+        "002": "CONNECT YOUR HEADPHONES",
+        "003": "BREATHE DEEPLY",
+        "004": "LET YOURSELF BE CARRIED BY THE SOUND",
+        "005": "CLOSE YOUR EYES"
+    }
+}

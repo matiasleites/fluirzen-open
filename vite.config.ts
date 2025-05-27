@@ -4,8 +4,11 @@ import { defineConfig } from "vite";
 import vike from "vike/plugin";
 
 export default defineConfig({
-  plugins: [vike(), react({}), tailwindcss()],
+  plugins: [vike({ prerender: true }), react({}), tailwindcss()],
   build: {
     target: "es2022",
+  },
+  server: {
+    port: 5173,
   },
 });

@@ -1,0 +1,32 @@
+{
+  "appName": "Fluirzen",
+  "appSlogan": "Mindfulness para sua jornada laboral",
+  "appDescription": "Pausas guiadas de 5 minutos para reduzir o estresse e aumentar o foco. Sem complicação – apenas respire, leia e recarregue.",
+  "underConstructionInfo": "Site em construção!",
+  "heroText": "Pausas guiadas de 5 minutos para reduzir o estresse e aumentar o foco.<br>Sem complicação – apenas respire, leia e recarregue.",
+  "aboutUsTitle": "Tecnologia e bem-estar, simplificados",
+  "aboutUs": "Sobre nós",
+  "aboutParagraphOne": "O FluirZen é um app de pausas ativas feito por desenvolvedores, para profissionais como você Oferecemos meditações guiadas por texto de apenas 5 minutos projetadas para se encaixar na sua rotina sem complicação.<br>Sem assinaturas ocultas, sem vozes robóticas. Apenas mindfulness eficiente para sua jornada.",
+  "aboutParagraphTwo": "Nosso frontend é open-source (disponível no GitHub), porque acreditamos em transparência e comunidade. Use os sons ambientais, leia as instruções em seu ritmo e volte ao trabalho renovado.",
+  "githubLink": "https://github.com/matiasleites/fluirzen-open",
+  "ourTeam": "Nossa equipe",
+  "ourTeamInfo": "Conheça a equipe que faz o desenvolvimento e manutenção do Fluirzen, pode contatar eles pelo linkedin.",
+  "founder": "Founder",
+  "freeLibrariesInfo": "Bibliotecas, ferramentas e sites usados no projeto",
+  "start": "Iniciar",
+  "loadingAudio": "Carregando audio",
+  "audioTypes": {
+    "forest": "Floresta",
+    "river": "Rio",
+    "ocean": "Oceano",
+    "music": "Música",
+    "rain": "Chuva"
+  },
+  "instructions": {
+    "001": "SENTE-SE NUMA POSIÇÃO CONFORTÁVEL",
+    "002": "CONECTE SEUS FONES DE OUVIDO",
+    "003": "RESPIRE PROFUNDAMENTE",
+    "004": "DEIXE-SE LEVAR PELO SOM",
+    "005": "FECHE SEUS OLHOS"
+  }
+}
