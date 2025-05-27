@@ -45,6 +45,7 @@ input[type="range"] {
 .player-cover-layout {
     position: fixed;
     display: flex;
+    z-index: 1000;
     width: 100vw;
     height: 100vh;
     top: 0;

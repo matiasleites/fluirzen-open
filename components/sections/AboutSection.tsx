@@ -9,7 +9,12 @@ export const AboutSection = () => {
   const isOnView = useInView(aboutRef, { amount: 0.1 });
   const { t } = useTranslation();
   return (
-    <section id="about" className="flex flex-col items-center justify-center min-h-[95vh] py-7 md:py-0" ref={aboutRef}>
+    <section
+      id="about"
+      className="flex flex-col items-center justify-center min-h-[95vh] py-7 md:py-0"
+      style={{ zIndex: 1 }}
+      ref={aboutRef}
+    >
       <ContentContainer className="px-5 md:px-0 w-full">
         <div className="col-span-0 md:col-span-1" />
         <div className="col-span-12 md:col-span-11">
